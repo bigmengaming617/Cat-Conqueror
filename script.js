@@ -30,7 +30,7 @@ for (let row = 0; row < ROWS; row++) {
 
     hex.addEventListener("click", () => {
       if (!hashome) {
-        hex.classList.add("home", "owned");
+        hex.classList.add("home");
         hashome = true;
       } else {
         if (isAdjacentToOwned(row, col)) {
@@ -69,7 +69,7 @@ function isAdjacentToOwned(r, c) {
 
   for (let [dr, dc] of neighbors) {
     const neighborHex = hexMap[`${r + dr}-${c + dc}`];
-    if (neighborHex && neighborHex.classList.contains("owned")) {
+    if (neighborHex && (neighborHex.classList.contains("owned") || neighborHex.classList.contains("home"))) {
       return true; // Found an adjacent owned hex!
     }
   }

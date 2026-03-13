@@ -30,7 +30,7 @@ for (let row = 0; row < ROWS; row++) {
 
     hex.addEventListener("click", () => {
       if (!hashome) {
-        hex.classList.add("home");
+        hex.classList.add("home", "owned");
         hashome = true;
       } else {
         if (isAdjacentToOwned(row, col)) {

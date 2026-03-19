@@ -203,8 +203,3 @@ function propaganda(){
 }
 
 
-function patrol(){
-  if (industry>6000 && generalStrength>350){
-    industry-=6000;
-  }
-}

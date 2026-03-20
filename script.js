@@ -4,7 +4,7 @@ const HEX_W = 60;
 const HEX_H = 69;
 
 //basic variables
-let industry=6000;
+let industry=1000;
 
 let politicalPower=50;
 let generalStrength=100;
@@ -18,6 +18,7 @@ let ownedIndustry=0;
 
 let ownedFarms=0;
 let ownedBarracks=0;
+let ownedPatrol=0;
 
 
 
@@ -125,7 +126,7 @@ grid.style.height = `${ROWS * (HEX_H * 0.75) + HEX_H * 0.25}px`;
 
 setInterval(()=>{
   
-  console.log("I repeat")
+  // console.log("I repeat")
   //industry snowballing
 
   //farms
@@ -133,7 +134,8 @@ setInterval(()=>{
   generalStrength+=1*ownedFarms
   //barracks
   generalStrength+=25*ownedBarracks
-  
+  //patrol
+  generalStrength+=75*ownedPatrol
   //Political power
   politicalPower+=1
   
@@ -186,7 +188,7 @@ function barracks(){
     document.getElementById("barracksOwned").textContent=ownedBarracks;
       
   };
-}
+};
 
 
 function propaganda(){
@@ -199,7 +201,16 @@ function propaganda(){
     document.getElementById("catpower").textContent=generalStrength;
     document.getElementById("industry").textContent=industry;
 
-  }
-}
+  };
+};
 
+function patrol(){
+  if (industry>6000 && ownedIndustry<ownedSpace){
+    industry-=6000;
+    ownedIndustry+=1;
+    ownedPatrol+=1;
+    document.getElementById("patrol").textContent=ownedPatrol;
+    document.getElementById("industry").textContent=industry;
+  };
+}
 

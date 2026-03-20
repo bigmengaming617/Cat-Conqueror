@@ -6,6 +6,9 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     allowedHosts: true,
-    hmr: true, // Change this line to false disable auto-refreshing.
+    hmr: true,
+    watch: {
+      ignored: ['**/.local/**', '**/node_modules/**'],
+    },
   }
 })

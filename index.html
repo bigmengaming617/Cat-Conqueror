@@ -7,23 +7,112 @@
   <meta name="viewport" content="width=device-width">
   <title>Replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 </head>
 
 <body>
+<audio id="i remember">
+  <source src="I remember clifford.mp3" type="audio/mpeg" volume=50%>
+</audio>
+<audio id="185">
+  <source src="185.mp3" type="audio/mpeg" volume=70%>
+</audio>
+
+<audio id="WAR!">
+  <source src="hoi4-war-declared.mp3" type="audio/mpeg">
+  
+</audio>
+<audio id="construct">
+  <source src="free_factories_alert.mp3" type="audio/mpeg">
+  
+</audio>
+<audio id="newspeak">
+  <source src="hoi4-news.mp3" type="audio/mpeg">
+</audio>
+<audio id="enlist">
+  <source src="hoi4-event-pop-up.mp3" type="audio/mpeg">
+</audio>
+<audio id="145">
+    <source src="145.mp3" type="audio/mpeg">
+</audio>
+
+  <audio id="research">
+      <source src="hoi4-join-faction-allies.mp3" type="audio/mpeg">
+  </audio>
+
 <h1>Cat Conqueror</h1>
 <img src="ca_1.png" width="20%">
+  <div><button onclick="musicplayer()">Click Me</button></div>
+<div><button onclick="window.location.href='tutorial.html'">Tutorial</button></div>
+
   <div class="variables">
     <p>CatPower : : <span id="catpower"></span></p>
     <p>Politicat Power : : <span id="politics"></span></p>
     <p>Industry : : <span id="industry"></span></p>
+    <p>Open Space : : <span id="openSpace"></span></p>
   </div>
   
  
   <div id="grid">
     
   </div>
-  <div id="news">
-    <h2>Daily News</h2>
+  <div class="news">
+    
+
+    
+    <h2>-Kitty News-</h2>
+    <h3><span id="newsCapital"></span></h3>
+    <h2><span id="newsH1"></span></h2>
+    <h2><span id="newsH2"></span></h2>
+    <h2><span id="newsH3"></span></h2>
+    <h2><span id="newsH4"></span></h2>
+    
+  </div>
+
+  <div class="techTree">
+    <h2>Tech Tree</h2>
+
+    <h3>----Capital Level 1----</h3>
+    <div>
+    <h4>PeaceTime Bonus</h4>
+    <p>+25 industry & 1 Political power during peacetime</p>
+    <button onclick="peacetime()">Research -10 pcp</button>
+    </div>
+    
+    <div>
+    <h4>Budget Cuts</h4>
+    <p>10% discount on all industrial buildings</p>
+    <button onclick="budgetCuts()">Research -50 pcp</button>
+    </div>
+
+
+
+    <div>
+      <h4>Scraping the Barrel</h4>
+      <p>1.5x Multiplier on Catpower gains from Barracks</p>
+      <button onclick="scrapeBarrel()">Research -300 pcp</button>
+    </div>
+
+
+    <h3>----Capital Level 2----</h3>
+
+
+    <div>
+      <h4>Military Factories</h4>
+      <P>Factories now give +15 Catpower</P>
+      <button onclick="militaryFactories()">Research -500 pcp</button>
+      
+    </div>
+
+    <div>
+      <h4>Endurance</h4>
+      <p>Expanding costs 150 less Catpower</p>
+      <button onclick="endurance()">Research -500 pcp</button>
+    </div>
+
+    <h3>----</h3>
   </div>
 
 
@@ -39,24 +128,37 @@
     
   </script>
   
-  <div id="upgrades">
+  <div class="upgrades">
     
     <h2>-Upgrades-</h2>
 
     <div class="industrial">
       <h2>--------Industry--------</h2>
       <div>
-        <h4>_Farms_</h4>
+        <h2>_Farms_</h2>
         <p>: <span id="ownedFarms"></span> :</p>
-        <p>+5 Industry per owned farm</p>
-        <p>+1 Catpower per owned farm</p>
-        <p>Requires open space</p>
-        <img src="TB farm.jpg" width=30%>
+        <p>+25 Industry per owned farm</p>
+        <p>+5 Catpower per owned farm</p>
+        <p>Requires open space and 50 industry</p>
+        <img src="Farm_ingame.webp" width=40%>
         <div>
         <button onclick="farm()">Build</button>
+        <button onclick="destroyFarms()">Destroy</button>
+       
         </div>
       </div>
-    
+
+      <div>
+        <h2>Factories</h2>
+        <p>:<span id="ownedFactory"></span>:</p>
+        <p>+75 Industry per owned factory</p>
+        <p>-5000 industry</p>
+        <p>requires open space</p>
+        <img src="industrial farm.webp" width=40%>
+        <div>
+        <button onclick="factory()">Build</button>
+        <button onclick="destroyFactory()">destroy</button>
+        </div>
 
       
     </div>
@@ -68,16 +170,26 @@
       <h2>---Political Power---</h2>
 
         <div>
-        <h4>Propaganda</h4>
+        <h2>-Propaganda-</h2>
           <p>Instant 5 Political Power</p>
           <p>-100 Industry & Catpower</p>
-          <img src="megaphone cat.jpg" width="20%">
+          <img src="megaphone cat.jpg" width="30%">
           <div>
           <button onclick="propaganda()">Spread Propaganda</button>
           </div>
 
           
         </div>
+        <div>
+          <h2>-Politicians-</h2>
+           <p>Political House:<span id="politicians"></span>:</p>
+           <p>+5 Political Power per politician</p>
+           <p>Requires -250 political power</p>
+           <img src="cat-in-suit-cat-suit-1444871020.gif" width="30%">
+           <div>
+           <button onclick="politician()">Hire</button>
+           </div>
+         </div>
 
       
       
@@ -89,10 +201,11 @@
       <h2>---War Machine---</h2>
         
        <div>
-        <h4>-Soldiers-</h4>
-         <p>Instant +50 gain in catpower</p>
+        <h2>-Soldiers-</h2>
+         <p>Army Size:<span id="army"></span>:</p>
+         <p>Instant Catpower gain scaled on army size</p>
          <p>Requires -1 political power</p>
-         <img src="soldier.webp" width="20%">
+         <img src="soldier.webp" width="30%">
          <div>
          <button onclick="enlistment()">Enlist</button>
          </div>
@@ -101,26 +214,30 @@
 
 
       <div>
-        <h4>Barracks</h4>
+        <h2>Barracks</h2>
         <p>+25 Catpower per second</p>
         <p>Requires open space and costs 3000 Industry</p>
         <p>: <span id="barracksOwned"> :</span>:</p>
-        <img src="barracks.webp" width="20%">
+        <img src="barracks.webp" width="40%">
         <div>
         <button onclick="barracks()">Build</button>
+        <button onclick="destroyBarracks()">Destroy</button>
         </div>
 
         
       </div>
 
       <div>
-        <h4>Patrol</h4>
-        <p>+75 catpower per second</p>
-        <p>Requires open space and costs 6000 industry</p>
+        <h2>Patrol</h2>
+        <p>+900 catpower per second</p>
+        <p>Requires open space and costs 60000 industry</p>
         <p>:<span id="patrol"></span>:</p>
-        <img src="patrol.webp" width="20%">
+        <img src="patrol.webp" width="40%">
         <div>
         <button onclick="patrol()">Build</button>
+        </div>
+        <div>
+        <button onclick="destroyPatrol()">Destroy</button>
         </div>
         
 

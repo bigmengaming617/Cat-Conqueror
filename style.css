@@ -1,14 +1,18 @@
 html,
 body {
   padding: 0;
-  margin: 0;
+  margin:0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #faf0ca;
+  background-color: #3d3d3d;
   text-align: center;
-
-
+  
+  
   font-family: "Josefin Sans", sans-serif ;
+  color: #d7e3fc;
+  
+  
+  
 
 
   
@@ -30,9 +34,11 @@ button{
   font-weight:bold;
   padding:10px;
   border-radius:5px;
+  border-color: snow;
   cursor: pointer;
-  background-color: #ee964b;
-  font-family: "Josefin-sans", sans-serif;
+  background-color: #003566;
+  font-family: 'Courier New', Courier, monospace;
+  color: snow;
 }
   
 
@@ -84,13 +90,14 @@ main {
 #grid {
   position: relative;
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .hex {
   position: absolute;
   width: 90px;
   height: 103.5px;
-  background-color: #0d3b66;
+  background-color: #25372e;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   display: flex;
   align-items: center;
@@ -113,25 +120,30 @@ main {
 }
 
 .hex.home {
-  background-color: #e6c005;
+  background-color: #001d3d;
   filter: drop-shadow(5px 5px 10px #272626);
+  
 }
 
 .hex.owned {
-  background-color: #f4d35e;
+  background-color: #33415c;
 }
 .hex.fortified1{
-  background-color: #ffc861;
+  background-color: #263450;
 }
 .hex.fortified2{
-  background-color: #feb42a;
+  background-color: #18253e;
 }
 
 .hex.enemy{
-  background-color: #f95738;
+  background-color: #660000;
+  font-family: 'Courier New', Courier, monospace
+}
+.hex.enemyOilDerrick{
+  background-color: #4f000b;
 }
 .hex.oilDerrick{
-  background-color: darkolivegreen
+  background-color: #080f1c
 }
 
 .card {
@@ -174,10 +186,14 @@ h2{
 font-family: 'Times New Roman', Times, serif
 }
 h1{
-  font-family: "josefin-sans", sans-serif;
+  font-family: 'Courier New', Courier, monospace;
 }
 h3{
   font-family: "Josefin Sans", sans-serif;
+}
+p{
+  font-family: 'Courier New', Courier, monospace;
+  
 }
 img{
   border-radius:5px;
@@ -193,7 +209,7 @@ img:hover{
   z-index: 1; /* Ensures it stays on top of other elements */
   top: 0; /* Positions it at the top of the viewport */
   left: 0; /* Positions it on the left */
-  background-color: #e3e3e3; /* Example background color */
+  background-color: #001d3d; /* Example background color */
   overflow-x: hidden; /* Disables horizontal scroll in the sidebar itself */
   padding-top: 20px;
   margin: 20px;
@@ -208,7 +224,7 @@ img:hover{
   z-index: 1; /* Ensures it stays on top of other elements */
   top: 0; /* Positions it at the top of the viewport */
   right: 0; /* Positions it on the left */
-  background-color: #ee964b; /* Example background color */
+  background-color: #001d3d; /* Example background color */
   overflow-x: hidden; /* Disables horizontal scroll in the sidebar itself */
   padding-top: 20px;
   margin: 40px;
@@ -216,36 +232,105 @@ img:hover{
   border: black solid 1px;
 }
 
-.techTree{
+.techTree:hover{
   height: 34%; /* Full height of the viewport */
   width: 250px; /* Set a fixed width */
   position: fixed; /* Fixes position relative to the viewport */
   z-index: 1; /* Ensures it stays on top of other elements */
   bottom: 0; /* Positions it at the top of the viewport */
   right: 0; /* Positions it on the left */
-  background-color: #ee964b; /* Example background color */
+  background-color: #001d3d; /* Example background color */
   overflow-x: hidden; /* Disables horizontal scroll in the sidebar itself */
   padding-top: 20px;
   margin: 20px;
   border-radius: 10px;
   border: black solid 1px;
+  overflow-y: visible;
+  
 
   
   
 }
-.upgrades {
+.techTree{
+  height: 34%; /* Full height of the viewport */
+  width: 25px; /* Set a fixed width */
+  position: fixed; /* Fixes position relative to the viewport */
+  z-index: 1; /* Ensures it stays on top of other elements */
+  bottom: 0; /* Positions it at the top of the viewport */
+  right: 0; /* Positions it on the left */
+  background-color: #001d3d; /* Example background color */
+  overflow-x: hidden; /* Disables horizontal scroll in the sidebar itself */
+  overflow-y: hidden;
+  padding-top: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  border: black solid 1px;
+
+
+
+}
+.techTreeNotifier{
+  height: 34%; /* Full height of the viewport */
+  width: 10px; /* Set a fixed width */
+  position: fixed; /* Fixes position relative to the viewport */
+  z-index: 1; /* Ensures it stays on top of other elements */
+  bottom: 0; /* Positions it at the top of the viewport */
+  right: 4%; /* Positions it on the left */
+  font-weight: bold;
+  color: #cdf0fe;
+  overflow-x: hidden; /* Disables horizontal scroll in the sidebar itself */
+  padding-top: 20px;
+  margin: 20px;
+  
+
+
+
+}
+.upgrades:hover{
   height: 40%; /* Full height of the viewport */
   width: 275px; /* Set a fixed width */
   position: fixed; /* Fixes position relative to the viewport */
   z-index: 1; /* Ensures it stays on top of other elements */
   top: 21%; /* Positions it at the top of the viewport */
   right: 0; /* Positions it on the left */
-  background-color: #e3e3e3; /* Example background color */
+  background-color: #001d3d; /* Example background color */
+  overflow-x: hidden; /* Disables horizontal scroll in the sidebar itself */
+  overflow-y: visible;
+  padding-top: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  border: black solid 1px;
+
+}
+.upgrades{
+  height: 40%; /* Full height of the viewport */
+  width: 25px; /* Set a fixed width */
+  position: fixed; /* Fixes position relative to the viewport */
+  z-index: 1; /* Ensures it stays on top of other elements */
+  top: 21%; /* Positions it at the top of the viewport */
+  right: 0; /* Positions it on the left */
+  background-color: #001d3d; /* Example background color */
   overflow-x: hidden; /* Disables horizontal scroll in the sidebar itself */
   padding-top: 20px;
   margin: 20px;
   border-radius: 10px;
   border: black solid 1px;
+  overflow-y: hidden;
+
+}
+.upgradeNotifier{
+  height: 80%; /* Full height of the viewport */
+  width: 10px; /* Set a fixed width */
+  position: fixed; /* Fixes position relative to the viewport */
+  z-index: 1; /* Ensures it stays on top of other elements */
+  top: 21%; /* Positions it at the top of the viewport */
+  right: 4%; /* Positions it on the left */
+  color: #cdf0fe;
+  font-weight: bold;
+  overflow-x: hidden; /* Disables horizontal scroll in the sidebar itself */
+  padding-top: 20px;
+  margin: 20px;
+  
 
 }
 button.techTree{

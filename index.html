@@ -5,6 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+ 
   <title>Replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,6 +53,8 @@
     <p>Politicat Power : : <span id="politics"></span></p>
     <p>Industry : : <span id="industry"></span></p>
     <p>Open Space : : <span id="openSpace"></span></p>
+    <p><span id='enemyPCP'></span></p>
+    <p><span id="enemyStrength"></span></p>
   </div>
   
  
@@ -70,7 +73,32 @@
     <h2><span id="newsH4"></span></h2>
     
   </div>
-
+  <div class="upgradeNotifier"><p>u
+    
+    p
+    
+    g
+    
+    
+    r
+    
+    a
+    
+    d
+    
+    e
+    
+    s
+  </p></div>
+  <div class="techTreeNotifier"><p>T
+    e
+    c
+    h
+    T
+    r
+    e
+    e</p></div>
+  
   <div class="techTree">
     <h2>Tech Tree</h2>
 
@@ -112,7 +140,34 @@
       <button onclick="endurance()">Research -500 pcp</button>
     </div>
 
-    <h3>----</h3>
+    <h3>----Capital Level 3----</h3>
+    <h3>Unlocks Level 1 Fortifications</h3>
+    <p>Fortifications are automatically placed when capturing enemy tiles</p>
+    <div>
+      <h4>War Goals</h4>
+      <p>Triggers war but capturing enemy tiles costs half political power</p>
+      <button onclick="warGoals()">Research -500 pcp</button>
+    </div>
+
+
+
+
+
+
+    <h3>----Capital Level 4----</h3>
+    <h3>Unlocks Level 2 Fortifications</h3>
+
+
+    <div>
+      <h4>Gerbil Eradication Device</h4>
+      <P>Triples Gain from Zed</P>
+      <button onclick="GED()">Research -2500 pcp</button>
+    </div>
+    <div>
+      <h4>K.I.A.</h4>
+      <p>Kitty Intelligence Agency reveals enemy stats permanently</p>
+      <button onclick="intelligence()">Research -300 pcp</button>
+    </div>
   </div>
 
 
@@ -228,11 +283,11 @@
       </div>
 
       <div>
-        <h2>Patrol</h2>
+        <h2>Zed</h2>
         <p>+900 catpower per second</p>
-        <p>Requires open space and costs 60000 industry</p>
+        <p>Requires open space and costs 400000 industry</p>
         <p>:<span id="patrol"></span>:</p>
-        <img src="patrol.webp" width="40%">
+        <img src="Zed_ingame.webp" width="40%">
         <div>
         <button onclick="patrol()">Build</button>
         </div>

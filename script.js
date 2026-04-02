@@ -9,7 +9,7 @@ let industry=200;
 let army=0;
 let capitalLevel=0;
 let enduranceBonus=0;
-
+let intel=false;
 let politicalPower=50;
 let generalStrength=100;
 let tyranny=0;
@@ -18,6 +18,8 @@ let discount=1
 let barracksMultiplier=1;
 let budgetcut=false;
 let barrel=false;
+let warPoliticalBonus=0;
+let zedBuff=1;
 //enemy variable
 let enemyPoliticalPower=50;
 let enemyStrength=700;
@@ -105,14 +107,14 @@ for (let row = 0; row < ROWS; row++) {
         hex.textContent="Capital *"
         document.getElementById("catpower").textContent=generalStrength;
       } else {
-        if (hex.classList.contains("enemy")&&isAdjacentToOwned(row,col)&&politicalPower>100&&generalStrength>4000){
+        if (hex.classList.contains("enemy")&&isAdjacentToOwned(row,col)&&politicalPower>100-warPoliticalBonus&&generalStrength>4000){
           hex.classList.remove("enemy")
           hex.classList.add("owned");
           
           ownedSpace+=1;
           enemySpaces-=1
           generalStrength-=4000;
-          politicalPower-=100;
+          politicalPower-=100-warPoliticalBonus;
           war=true;
           peace=false;
           document.getElementById("WAR!").play();
@@ -120,7 +122,7 @@ for (let row = 0; row < ROWS; row++) {
           tyranny+=5000
 
         }
-        if (hex.classList.contains("enemyOilDerrick")&&isAdjacentToOwned(row,col)&&politicalPower>100&&generalStrength>4000){
+        if (hex.classList.contains("enemyOilDerrick")&&isAdjacentToOwned(row,col)&&politicalPower>100-warPoliticalBonus&&generalStrength>4000){
             hex.classList.remove("enemy");
             hex.classList.remove("enemyOilDerrick");
             hex.classList.add("owned","oilDerrick");
@@ -128,7 +130,7 @@ for (let row = 0; row < ROWS; row++) {
             ownedSpace+=1;
             enemySpaces-=1
             generalStrength-=4000;
-            politicalPower-=100;
+            politicalPower-=100-warPoliticalBonus;
             ownedOilDerrick+=1;
             ownedIndustry+=1;
             war=true;
@@ -396,6 +398,7 @@ function enemyCapture(){
         }
         else{
           console.log("no turn")
+          enemyPoliticalPower+=50;
           break
         }
         
@@ -488,7 +491,11 @@ setInterval(()=>{
   enemyBuild();
 
   enemyCapture();
- 
+  if (intel==true){
+    document.getElementById("enemyPCP").textContent=`Enemy Political power ${enemyPoliticalPower}`
+    document.getElementById("enemyStrength").textContent=`Enemy Strength ${enemyStrength}`
+  }
+  else{console.log("yo")}
 
   //news
   if (0>generalStrength && 0>politicalPower){
@@ -554,11 +561,11 @@ setInterval(()=>{
   generalStrength+=(25*ownedBarracks)*barracksMultiplier;
   document.getElementById("barracksOwned").textContent=ownedBarracks;
 
-  //patrol
-  generalStrength+=900*ownedPatrol
+  //zed
+  generalStrength+=(900*zedBuff)*ownedPatrol;
   //Political power
-  politicalPower+=0.5
-
+  
+  politicalPower+=0.5+capitalLevel**2;
 
 
   //oil
@@ -610,13 +617,13 @@ function farm(){
 function enlistment(){
   if (politicalPower>2){
     if (army>0){
-      generalStrength+=50
+      generalStrength+=20
     }
     else if(army>50){
-      generalStrength+=35
+      generalStrength+=10
     }
     else if(army>100){
-      generalStrength+=25
+      generalStrength+=5
     }
     politicalPower-=1;
     tyranny+=1;
@@ -659,8 +666,8 @@ function propaganda(){
 };
 
 function patrol(){
-  if (industry>60000 && ownedIndustry<ownedSpace){
-    industry-=60000;
+  if (industry>400000 && ownedIndustry<ownedSpace){
+    industry-=400000;
     ownedIndustry+=1;
     ownedPatrol+=1;
     document.getElementById("patrol").textContent=ownedPatrol;
@@ -716,8 +723,8 @@ function factory(){
     }
   }
   else{
-    if (industry>2000&&ownedSpace>ownedIndustry){
-      industry-=2000;
+    if (industry>5000&&ownedSpace>ownedIndustry){
+      industry-=5000;
       ownedIndustry+=1;
       ownedFactory+=1;
       document.getElementById("ownedFactory").textContent=ownedFactory;
@@ -791,5 +798,30 @@ function endurance(){
     politicalPower-=500;
     document.getElementById("research").play();
     document.getElementById("newsH4").textContent="Endurance of Expedition Teams Bolstered";
+  }
+}
+let warGoal=false;
+function warGoals(){
+  if (politicalPower>=500 && capitalLevel>=3 &&warGoal==false){
+    politicalPower-=500;
+    warPoliticalBonus+=50;
+    war=true;
+    tyranny+=50000
+    document.getElementById("WAR!").play();
+  }
+}
+function GED(){
+  if (politicalPower>=2500 && capitalLevel>=4 && zedBuff==1){
+    politicalPower-=2500;
+    zedBuff+=2;
+    tyranny+=500000;
+    document.getElementById("research").play();
+  }
+}
+function intelligence(){
+  if (politicalPower>=300 && capitalLevel>=4 && intel==false){
+    politicalPower-=300;
+    intel=true;
+    document.getElementById("research").play();
   }
 }

@@ -12,10 +12,19 @@ body {
   color: #d7e3fc;
   
   
-  
+  overflow-x: hidden;
 
 
   
+}
+.upgrades:hover::-webkit-scrollbar{
+  display:none;
+}
+.techTree:hover::-webkit-scrollbar{
+  display:none;
+}
+.variables::-webkit-scrollbar{
+  display:none;
 }
 
 .josefin-sans-regular-body {
@@ -183,7 +192,7 @@ main {
   }
 }
 h2{
-font-family: 'Times New Roman', Times, serif
+font-family: 'Courier New', Courier, monospace
 }
 h1{
   font-family: 'Courier New', Courier, monospace;
@@ -279,6 +288,7 @@ img:hover{
   font-weight: bold;
   color: #cdf0fe;
   overflow-x: hidden; /* Disables horizontal scroll in the sidebar itself */
+  
   padding-top: 20px;
   margin: 20px;
   
@@ -319,8 +329,8 @@ img:hover{
 
 }
 .upgradeNotifier{
-  height: 80%; /* Full height of the viewport */
-  width: 10px; /* Set a fixed width */
+  height: 100%; /* Full height of the viewport */
+  width: 15px; /* Set a fixed width */
   position: fixed; /* Fixes position relative to the viewport */
   z-index: 1; /* Ensures it stays on top of other elements */
   top: 21%; /* Positions it at the top of the viewport */

@@ -49,10 +49,8 @@ let ownedOilDerrick=0;
 const rand=(min,max) => Math.floor(Math.random()*(max-min+1))+min;
 function musicplayer(){
   if (war!=true){
-    num=rand(1,2)
-    if (num==1){
-      document.getElementById("i remember").play()
-    }
+    num=rand(2,2)
+    
     if (num==2){
       document.getElementById("185").play()
     }
@@ -808,6 +806,7 @@ function warGoals(){
     war=true;
     tyranny+=50000
     document.getElementById("WAR!").play();
+    document.getElementById("grinder").play();
   }
 }
 function GED(){
